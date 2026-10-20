@@ -1,0 +1,16 @@
+{
+  "stage": 4,
+  "status": "blocked_pending_external_cohort_and_verified_feature_mapping",
+  "prior_stages": "Stages 2 and 3 are internal evaluation of the same dataset",
+  "independent_cohort_available": false,
+  "verified_original_feature_to_gene_mapping": false,
+  "external_accuracy": null,
+  "validated_biomarkers": [],
+  "next_actions": [
+    "Identify independently collected annotated RNA-Seq cohort",
+    "Verify original feature-to-gene correspondence",
+    "Document patient and study independence",
+    "Assess batch effects and normalization compatibility",
+    "Evaluate locked model only if mapping and cohort comparability are defensible"
+  ]
+}
