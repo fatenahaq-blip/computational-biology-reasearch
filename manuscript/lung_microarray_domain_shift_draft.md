@@ -3,7 +3,7 @@
 **Faten Tawfiq Abdelhaq**  
 Independent Researcher
 
-**Manuscript status:** Working scientific manuscript, not peer reviewed or submitted. Automated title-based patient-level audit completed; original clinical provenance verification pending. Results concern **microarray** gene-expression measurements, not RNA sequencing. This work is separate from the earlier five-cancer UCI RNA-Seq demonstration.
+**Manuscript status:** Scientifically audited working draft; **not cleared for journal or preprint submission**. See [Scientific Audit](SCIENTIFIC_AUDIT.md) for outstanding provenance, patient-independence and reproducibility checks. Automated title-based patient-level audit completed; original clinical provenance verification pending. Results concern **microarray** gene-expression measurements, not RNA sequencing. This work is separate from the earlier five-cancer UCI RNA-Seq demonstration.
 
 ## Abstract
 
@@ -27,7 +27,7 @@ The present study investigated the transportability of a binary lung tumor-versu
 
 ### 2.1 Data sources and cohort roles
 
-Public gene-expression series were obtained from the NCBI Gene Expression Omnibus (GEO). GSE10072 supplied 107 training specimens (58 tumor and 49 normal) and 74 title-inferred patient groups. GSE7670 supplied 52 selected patient-tissue specimens (26 tumor and 26 normal) from 26 title-inferred patient groups. Mixed tissue preparations, cell lines and other excluded sample types were not used for this evaluation. GSE31547 supplied 50 specimens (30 tumor and 20 normal), with 43 distinct identifiers inferred from specimen titles. The third cohort was not used during the earlier normalization exploration.
+Public gene-expression series were obtained from the NCBI Gene Expression Omnibus (GEO). GSE10072 supplied 107 final expression profiles (58 tumor and 49 normal) and 74 title-inferred patient groups. The original GEO study states that technical replicates were averaged before releasing the final 107 expression profiles; these must not be interpreted as 107 confirmed independent biological patients. GSE7670 supplied 52 selected patient-tissue specimens (26 tumor and 26 normal) from 26 title-inferred patient groups. Mixed tissue preparations, cell lines and other excluded sample types were not used for this evaluation. GSE31547 supplied 50 specimens (30 tumor and 20 normal), with 43 distinct identifiers inferred from specimen titles. The third cohort was not used during the earlier normalization exploration. Study-level separation does not establish verified patient-level non-overlap across the three datasets.
 
 All three studies used Affymetrix GPL96 microarrays. The comparison aligned 22,215 shared probe identifiers after excluding AFFX control probes. Feature correspondence was established by probe identifier, not matrix position. This is a microarray analysis and should not be conflated with the separate UCI RNA-Seq five-cancer experiment.
 
@@ -43,7 +43,7 @@ The selection criterion was training grouped-CV balanced accuracy; ties favored 
 
 ### 2.4 Locked third-cohort evaluation
 
-A Stage 7 protocol was committed to the GitHub repository before evaluating GSE31547 outcomes. It fixed the percentile-rank representation, shared probe alignment, 200-feature ANOVA selection on GSE10072 only, standardization on GSE10072 only, logistic regression, and a classification threshold of 0.5. The resulting model was applied once to GSE31547 without outcome-dependent modification. The primary endpoint was balanced accuracy; secondary endpoints included sensitivity, specificity, macro F1 and ROC-AUC.
+A Stage 7 protocol was committed to the GitHub repository before evaluating GSE31547 outcomes. It fixed the percentile-rank representation, shared probe alignment, 200-feature ANOVA selection on GSE10072 only, standardization on GSE10072 only, logistic regression, and a classification threshold of 0.5. The resulting model was applied once to GSE31547 without outcome-dependent modification. Shared probe alignment used the external cohort's available feature identifiers but not its labels. The primary endpoint was balanced accuracy; secondary endpoints included sensitivity, specificity, macro F1 and ROC-AUC.
 
 ### 2.5 Independence and uncertainty
 
@@ -87,7 +87,7 @@ The nearly perfect log2 ROC-AUC with zero sensitivity at the default decision th
 
 ### 4.1 Limitations
 
-This is an observational computational study using curated public microarray datasets, not RNA-Seq, prospective screening or a clinically validated assay. GSE10072 and GSE7670 differ in published preprocessing (RMA versus MAS5); this may contribute to domain shift but has not been isolated causally. The small external cohorts, title-inferred patient identifiers, possible specimen dependence and post-hoc development of the rank-based hypothesis limit inferential strength. The GPL96 probe identifiers have not been used to establish novel or clinically validated biomarkers. Results may be sensitive to the study-specific inclusion rules and to the choice of preprocessing.
+This is an observational computational study using curated public microarray datasets, not RNA-Seq, prospective screening or a clinically validated assay. GSE10072 and GSE31547 are reported as RMA processed in GEO sample records. The repository describes GSE7670 as MAS5 scaled, but complete per-sample verification of its processing provenance remains outstanding. Preprocessing differences may contribute to domain shift but have not been isolated causally. The small external cohorts, title-inferred patient identifiers, possible specimen dependence and post-hoc development of the rank-based hypothesis limit inferential strength. The GPL96 probe identifiers have not been used to establish novel or clinically validated biomarkers. Results may be sensitive to the study-specific inclusion rules and to the choice of preprocessing.
 
 ### 4.2 Next steps
 
@@ -103,17 +103,17 @@ Original data are available from GEO under accessions [GSE10072](https://www.ncb
 
 ## Ethics statement
 
-This computational study uses publicly available, previously collected and de-identified gene-expression data. Institutional review and dataset-specific reuse requirements should be checked before journal submission.
+This computational study reanalyzes publicly available expression data. It did not enroll participants or obtain access to identifiable clinical records. Dataset-specific permissions, any applicable institutional review requirements, and public metadata sensitivity must be confirmed before submission.
 
 ## Funding and conflicts of interest
 
 Funding: No external funding reported for this independent portfolio study.  
 Conflicts of interest: To be confirmed by the author before submission.
 
-## References (bibliographic audit pending)
+## References (primary study bibliography still pending verification)
 
 1. Edgar R, Domrachev M, Lash AE. Gene Expression Omnibus: NCBI gene expression and hybridization array data repository. *Nucleic Acids Research*. 2002;30(1):207–210. https://doi.org/10.1093/nar/30.1.207
 2. Barrett T, et al. NCBI GEO: archive for functional genomics data sets—update. *Nucleic Acids Research*. 2013;41(D1):D991–D995. https://doi.org/10.1093/nar/gks1193
 3. Leek JT, et al. Tackling the widespread and critical impact of batch effects in high-throughput data. *Nature Reviews Genetics*. 2010;11:733–739. https://doi.org/10.1038/nrg2825
 4. Bolstad BM, Irizarry RA, Åstrand M, Speed TP. A comparison of normalization methods for high density oligonucleotide array data based on variance and bias. *Bioinformatics*. 2003;19(2):185–193. https://doi.org/10.1093/bioinformatics/19.2.185
-5. GSE10072, GSE7670 and GSE31547: original GEO series records, linked in Data availability. Original study articles and dataset-specific sample annotations require final citation audit.
+5. GSE10072. *Gene expression signature of cigarette smoking and its role in lung adenocarcinoma development and survival*. GEO series record; lists PMID 18297132. https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE10072\n6. GSE7670. *Expression data from Lung cancer*. GEO series record; lists PMIDs 17540040 and 19337377. https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE7670\n7. GSE31547. *MSKCC-A Primary Lung Cancer Specimens*. GEO series record; subseries of GSE31908. https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE31547\n\nFull primary-study bibliography and all claims should be checked before submission. See [SCIENTIFIC_AUDIT.md](SCIENTIFIC_AUDIT.md).
