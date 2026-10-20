@@ -1,0 +1,105 @@
+{
+  "study_type": "exploratory post-hoc normalization sensitivity analysis",
+  "training_samples": 107,
+  "external_samples": 52,
+  "aligned_probes": 22215,
+  "selection_rule": "maximum grouped-CV balanced accuracy on training cohort only; ties favor raw",
+  "selected_method": "raw",
+  "training_cv": {
+    "raw": {
+      "balanced_accuracy_mean": 0.9777777777777779,
+      "balanced_accuracy_sd": 0.04444444444444447,
+      "roc_auc_mean": 1.0
+    },
+    "log2": {
+      "balanced_accuracy_mean": 0.9777777777777779,
+      "balanced_accuracy_sd": 0.04444444444444447,
+      "roc_auc_mean": 1.0
+    },
+    "percentile_rank": {
+      "balanced_accuracy_mean": 0.9777777777777779,
+      "balanced_accuracy_sd": 0.04444444444444447,
+      "roc_auc_mean": 0.9982905982905983
+    }
+  },
+  "external_results_all_methods": {
+    "raw": {
+      "accuracy": 0.6346153846153846,
+      "balanced_accuracy": 0.6346153846153846,
+      "f1": 0.42424242424242425,
+      "roc_auc": 0.6538461538461539,
+      "tumor_sensitivity": 0.2692307692307692,
+      "normal_specificity": 1.0,
+      "confusion_matrix": [
+        [
+          26,
+          0
+        ],
+        [
+          19,
+          7
+        ]
+      ]
+    },
+    "log2": {
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5,
+      "f1": 0.0,
+      "roc_auc": 0.9985207100591716,
+      "tumor_sensitivity": 0.0,
+      "normal_specificity": 1.0,
+      "confusion_matrix": [
+        [
+          26,
+          0
+        ],
+        [
+          26,
+          0
+        ]
+      ]
+    },
+    "percentile_rank": {
+      "accuracy": 0.9423076923076923,
+      "balanced_accuracy": 0.9423076923076923,
+      "f1": 0.9387755102040817,
+      "roc_auc": 1.0,
+      "tumor_sensitivity": 0.8846153846153846,
+      "normal_specificity": 1.0,
+      "confusion_matrix": [
+        [
+          26,
+          0
+        ],
+        [
+          3,
+          23
+        ]
+      ]
+    }
+  },
+  "label_free_distribution_diagnostics": {
+    "raw": {
+      "train_median": 7.427512016,
+      "external_median": 213.8,
+      "pooled_value_wasserstein": 775.377896956705
+    },
+    "log2": {
+      "train_median": 3.075106779214677,
+      "external_median": 7.746850183098051,
+      "pooled_value_wasserstein": 4.558213929693746
+    },
+    "percentile_rank": {
+      "train_median": 0.5000225073148773,
+      "external_median": 0.5,
+      "pooled_value_wasserstein": 0.00096891419472604
+    }
+  },
+  "integrity_notes": [
+    "No external labels used in fitting, feature selection or method choice.",
+    "External labels were previously inspected in Stage 5; this is exploratory, not untouched validation.",
+    "Per-sample ranks remove absolute expression scale and may erase biological signal.",
+    "Pooled-value distribution differences do not establish correction of biological batch effects.",
+    "Any improvement requires a new independent cohort for confirmation."
+  ]
+}

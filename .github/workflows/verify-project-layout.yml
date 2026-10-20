@@ -1,0 +1,46 @@
+name: Verify research project layout
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - refactor/research-project-layout
+    paths:
+      - 'projects/**'
+      - '.github/workflows/verify-project-layout.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify copied source and results match original files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, py_compile
+          pairs = {
+            "src/train.py":"projects/01-breast-cancer-classification/src/train.py",
+            "tests/test_experiment.py":"projects/01-breast-cancer-classification/tests/test_experiment.py",
+            "docs/validated-results.md":"projects/01-breast-cancer-classification/results/validated-results.md",
+            "stage2-rnaseq/rnaseq_analysis.py":"projects/02-multicancer-rnaseq/src/rnaseq_analysis.py",
+            "stage2-rnaseq/results/rnaseq_metrics.json":"projects/02-multicancer-rnaseq/results/rnaseq_metrics.json",
+            "stage2-rnaseq/stage3_stability.py":"projects/03-rnaseq-robustness/src/stage3_stability.py",
+            "stage2-rnaseq/results/stage3_stability.json":"projects/03-rnaseq-robustness/results/stage3_stability.json",
+            "stage2-rnaseq/stage4_external_audit.py":"projects/04-validation-readiness/src/stage4_external_audit.py",
+            "stage2-rnaseq/results/stage4_readiness.json":"projects/04-validation-readiness/results/stage4_readiness.json",
+            "stage2-rnaseq/cross_cohort_microarray.py":"projects/05-lung-microarray/src/cross_cohort_microarray.py",
+            "stage2-rnaseq/stage6_domain_shift.py":"projects/05-lung-microarray/src/stage6_domain_shift.py",
+            "stage2-rnaseq/stage7_third_cohort.py":"projects/05-lung-microarray/src/stage7_third_cohort.py",
+            "stage2-rnaseq/stage8_patient_audit.py":"projects/05-lung-microarray/src/stage8_patient_audit.py",
+            "stage2-rnaseq/results/stage7_third_cohort.json":"projects/05-lung-microarray/results/stage7_third_cohort.json",
+            "stage2-rnaseq/results/source_reproduction_audit.json":"projects/05-lung-microarray/results/source_reproduction_audit.json",
+          }
+          for src,dst in pairs.items():
+              a,b=Path(src),Path(dst)
+              assert a.is_file() and b.is_file(),f"Missing file: {src} or {dst}"
+              assert hashlib.sha256(a.read_bytes()).digest()==hashlib.sha256(b.read_bytes()).digest(),f"Mismatch: {dst}"
+              if dst.endswith(".py"): py_compile.compile(str(b),doraise=True)
+              print("Verified",dst)
+          PY

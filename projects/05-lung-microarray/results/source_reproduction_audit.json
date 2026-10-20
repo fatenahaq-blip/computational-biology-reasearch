@@ -1,0 +1,32 @@
+{
+  "status": "independently_reexecuted_from_public_processed_GEO_series_matrices",
+  "raw_CEL_reprocessing": false,
+  "training_samples": 107,
+  "external_samples": 52,
+  "third_samples": 50,
+  "stage6_external_balanced_accuracy": {
+    "raw": 0.6346153846153846,
+    "log2": 0.5,
+    "percentile_rank": 0.9423076923076923
+  },
+  "stage7_balanced_accuracy": 0.975,
+  "stage8_inferred_patient_groups": 43,
+  "source_series_matrix_sha256": {
+    "GSE10072": "68fc224d6c23b1802ddc2223a0433c8cf25f11cdb9606e33736f4a0c098496af",
+    "GSE7670": "f321f33535c8b929f08499e12e3c2a950030b84bfeb47de8ba8bbd32b934dad7",
+    "GSE31547": "cd91ab08f89c282260b4c97fa7199f376a2738e05ad4e61d98f9055ad811d5ee"
+  },
+  "software": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.9.1",
+    "scipy": "1.17.1",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+  },
+  "limitations": [
+    "Same codebase and data processing, separate automated rerun; not an independent analyst replication.",
+    "Uses GEO processed matrices, not original raw CEL reprocessing.",
+    "Patient identities across studies remain unverified."
+  ]
+}

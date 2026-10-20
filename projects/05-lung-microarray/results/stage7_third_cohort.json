@@ -1,0 +1,42 @@
+{
+  "protocol": "STAGE7_LOCKED_PROTOCOL.md",
+  "training_accession": "GSE10072",
+  "held_out_accession": "GSE31547",
+  "platform": "GPL96 microarray (not RNA-Seq)",
+  "training_samples": 107,
+  "held_out_samples": 50,
+  "held_out_unique_patient_title_ids": 43,
+  "shared_probe_ids": 22215,
+  "selected_probe_count": 200,
+  "representation": "within-sample percentile_rank",
+  "threshold": 0.5,
+  "balanced_accuracy": 0.975,
+  "macro_f1": 0.9789827658680117,
+  "roc_auc": 0.965,
+  "tumor_sensitivity": 1.0,
+  "normal_specificity": 0.95,
+  "tumor_sensitivity_wilson_95": [
+    0.8864866068260312,
+    0.9999999999999999
+  ],
+  "normal_specificity_wilson_95": [
+    0.763868806553258,
+    0.9911185511992047
+  ],
+  "confusion_matrix": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      30
+    ]
+  ],
+  "notes": [
+    "Third-cohort labels used only for locked final evaluation.",
+    "No model fitting, threshold tuning or feature selection on third cohort.",
+    "Wilson intervals treat specimens as independent; verify patient-level metadata before inferential interpretation.",
+    "No biomarker or clinical utility claims."
+  ]
+}
