@@ -3,7 +3,7 @@
 **Faten Tawfiq Abdelhaq**  
 Independent Researcher
 
-**Manuscript status:** Working scientific manuscript, not peer reviewed or submitted. Patient-level provenance audit pending. Results concern **microarray** gene-expression measurements, not RNA sequencing. This work is separate from the earlier five-cancer UCI RNA-Seq demonstration.
+**Manuscript status:** Working scientific manuscript, not peer reviewed or submitted. Automated title-based patient-level audit completed; original clinical provenance verification pending. Results concern **microarray** gene-expression measurements, not RNA sequencing. This work is separate from the earlier five-cancer UCI RNA-Seq demonstration.
 
 ## Abstract
 
@@ -11,7 +11,7 @@ Independent Researcher
 
 **Methods:** A logistic-regression pipeline with training-only ANOVA selection of 200 shared Affymetrix GPL96 probes was trained on GSE10072 (107 specimens). Grouped cross-validation estimated internal performance. The locked raw-expression model was evaluated on GSE7670 (52 selected patient-tissue specimens). Three representations—raw expression, fixed log2 transformation and per-sample percentile ranks—were then compared in an exploratory analysis; model selection used training-only cross-validation. A percentile-rank model, specified and committed before outcome evaluation, was subsequently assessed on the previously unused GSE31547 cohort (50 specimens). No external labels were used to fit the models.
 
-**Results:** Raw-expression grouped training cross-validation yielded 97.78% balanced accuracy, but external balanced accuracy on GSE7670 was 63.46% (tumor sensitivity 7/26). In the post-hoc comparison, percentile ranks yielded 94.23% balanced accuracy on GSE7670 (23/26 tumors identified), versus 50.00% with the log2 representation. All three representations tied on the training-only balanced-accuracy criterion; therefore the pre-specified selection rule still favored raw expression. In the separately locked GSE31547 evaluation, percentile ranks achieved 97.50% balanced accuracy, ROC-AUC 0.965, and 49/50 correctly classified specimens. GSE31547 included only 43 unique patient identifiers inferred from titles across 50 specimens; patient-level independence remains under audit.
+**Results:** Raw-expression grouped training cross-validation yielded 97.78% balanced accuracy, but external balanced accuracy on GSE7670 was 63.46% (tumor sensitivity 7/26). In the post-hoc comparison, percentile ranks yielded 94.23% balanced accuracy on GSE7670 (23/26 tumors identified), versus 50.00% with the log2 representation. All three representations tied on the training-only balanced-accuracy criterion; therefore the pre-specified selection rule still favored raw expression. In the separately locked GSE31547 evaluation, percentile ranks achieved 97.50% balanced accuracy, ROC-AUC 0.965, and 49/50 correctly classified specimens. GSE31547 contained 43 unique title-inferred patient identifiers across 50 specimens; seven identifiers occurred twice with one tumor and one normal specimen. Patient-cluster bootstrap yielded a descriptive 95% balanced-accuracy interval of 0.9199–1.0000. Clinical provenance of inferred identifiers remains to be verified.
 
 **Conclusions:** Cross-cohort performance differed markedly from internal validation. Sample-wise percentile ranks showed promising exploratory transportability and strong performance in a third study under a locked protocol. Findings remain limited by cohort heterogeneity, preprocessing differences, specimen dependence, small sample sizes and lack of clinical validation.
 
@@ -47,7 +47,7 @@ A Stage 7 protocol was committed to the GitHub repository before evaluating GSE3
 
 ### 2.5 Independence and uncertainty
 
-The initial third-cohort result included specimen-level Wilson intervals for sensitivity and specificity. However, 50 specimens corresponded to 43 title-inferred identifiers, indicating possible within-patient dependence. A separate patient-level audit and group-resampling analysis was initiated; until its results and original sample provenance are reviewed, specimen-level intervals are descriptive rather than definitive patient-independent inference.
+The initial third-cohort result included specimen-level Wilson intervals for sensitivity and specificity. However, 50 specimens corresponded to 43 title-inferred identifiers, indicating possible within-patient dependence. A title-based patient-level audit identified seven repeated identifiers, each with one tumor and one normal specimen. A 4,000-replicate patient-cluster bootstrap yielded a descriptive 95% balanced-accuracy interval of 0.9199–1.0000. Because title-based IDs have not been verified against original clinical records, the cluster interval remains conditional on this inferred grouping.
 
 ### 2.6 Reproducibility
 
@@ -75,7 +75,7 @@ The percentile-rank pipeline achieved balanced accuracy 0.9750, macro F1 0.9790 
 
 ### 3.4 Patient-level audit
 
-**Pending final audit results.** The automated title-based check identified 43 distinct title-inferred patient identifiers among 50 specimens. The number and nature of repeated identifiers, mixed tumor/normal specimen groups, and patient-cluster bootstrap uncertainty will be inserted after the Stage 8 workflow completes. No claim of 50 independent patients is made.
+The automated title-based audit identified 43 distinct inferred patient identifiers among 50 specimens. Seven IDs (8, 21, 22, 27, 44, 48, 83) occurred twice; each included one tumor and one normal specimen. A 4,000-replicate cluster bootstrap resampling inferred patient groups produced a descriptive 95% balanced-accuracy interval of 0.9199–1.0000. The audit reproduced the locked confusion matrix [[19, 1], [0, 30]]. Original clinical metadata are still needed to confirm whether these inferred identifiers correspond to actual unique patients. No claim of 50 independent patients is made.
 
 ## 4. Discussion
 
@@ -91,7 +91,7 @@ This is an observational computational study using curated public microarray dat
 
 ### 4.2 Next steps
 
-Complete the patient-level metadata audit; report cluster-aware uncertainty; document original cohort provenance and preprocessing in a supplementary evidence table; examine additional genuinely unused studies; and assess verified probe-to-gene mapping and pathway analysis only with appropriately controlled annotation and multiple-testing procedures.
+Verify title-inferred patient IDs against original clinical metadata; document original cohort provenance and preprocessing in a supplementary evidence table; examine additional genuinely unused studies; and assess verified probe-to-gene mapping and pathway analysis only with appropriately controlled annotation and multiple-testing procedures.
 
 ## 5. Conclusion
 
