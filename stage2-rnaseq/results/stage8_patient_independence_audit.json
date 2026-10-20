@@ -1,0 +1,351 @@
+{
+  "source": "GSE31547 GEO sample titles (title-derived patient IDs; clinical identity unverified)",
+  "n_specimens": 50,
+  "n_unique_title_patient_ids": 43,
+  "n_repeated_title_patient_ids": 7,
+  "repeated_id_counts": {
+    "8": 2,
+    "21": 2,
+    "22": 2,
+    "27": 2,
+    "44": 2,
+    "48": 2,
+    "83": 2
+  },
+  "mixed_tumor_normal_title_groups": [
+    "21",
+    "22",
+    "27",
+    "44",
+    "48",
+    "8",
+    "83"
+  ],
+  "n_mixed_groups": 7,
+  "train_patient_groups": 74,
+  "external_specimen_balanced_accuracy": 0.975,
+  "external_confusion_matrix": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      30
+    ]
+  ],
+  "patient_cluster_bootstrap_balanced_accuracy_95": [
+    0.9199166666666666,
+    1.0
+  ],
+  "cluster_bootstrap_valid_replicates": 4000,
+  "per_title_group_summary": [
+    {
+      "title_patient_id": "10",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "104",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "15",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "16",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "18",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "20",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "21",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "22",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "25",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "27",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "29",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "3",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "32",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "33",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "35",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "38",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "40",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "41",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "42",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "44",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "48",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "49",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "52",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "54",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "56",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "57",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "65",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "66",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "67",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "68",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "7",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "70",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "71",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "73",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "74",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "77",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "78",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 1
+    },
+    {
+      "title_patient_id": "8",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "80",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "81",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "82",
+      "n_specimens": 1,
+      "n_normal": 1,
+      "n_tumor": 0,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "83",
+      "n_specimens": 2,
+      "n_normal": 1,
+      "n_tumor": 1,
+      "n_errors": 0
+    },
+    {
+      "title_patient_id": "94",
+      "n_specimens": 1,
+      "n_normal": 0,
+      "n_tumor": 1,
+      "n_errors": 0
+    }
+  ],
+  "limitations": [
+    "Title-inferred identifiers may not represent unique biological patients; verify original clinical metadata.",
+    "Cluster bootstrap accounts for repeated specimens within inferred groups but not study selection bias.",
+    "The original Stage 7 model and 0.5 threshold were not changed.",
+    "Results are microarray-based, not RNA-Seq; no clinical diagnosis or biomarker validation."
+  ]
+}
