@@ -5,7 +5,7 @@
 This page presents the verified results in human-readable form. All figures refer to specific datasets and experiments; **do not compare metrics across different tasks as if they measured the same clinical problem.**
 
 ## Stage 1 — Breast Cancer Image-Derived Feature Classification
-**[Open Stage 1](STAGE-01-Breast-Cancer-Classification/README.md)**
+**[Open Stage 1](projects/01-breast-cancer-classification/OVERVIEW.md)**
 
 | Result | Logistic regression | Random forest |
 |---|---:|---:|
@@ -15,7 +15,7 @@ This page presents the verified results in human-readable form. All figures refe
 [Validation evidence](docs/validated-results.md)
 
 ## Stage 2 — Five-Cancer RNA-Seq Classification
-**[Open Stage 2](STAGE-02-Multi-Cancer-RNA-Seq/README.md)**
+**[Open Stage 2](projects/02-multicancer-rnaseq/OVERVIEW.md)**
 
 | Metric | Result |
 |---|---:|
