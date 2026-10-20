@@ -1,0 +1,27 @@
+name: Stage 4 external validation readiness
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'stage2-rnaseq/stage4_external_audit.py'
+      - 'stage2-rnaseq/test_stage4_audit.py'
+      - '.github/workflows/stage4-readiness.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install numpy pandas
+      - name: Test external cohort safeguards
+        working-directory: stage2-rnaseq
+        run: python -m unittest -v test_stage4_audit.py
+      - name: Upload readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage4-external-validation-readiness
+          path: stage2-rnaseq/results/stage4_readiness.json
+          if-no-files-found: error
