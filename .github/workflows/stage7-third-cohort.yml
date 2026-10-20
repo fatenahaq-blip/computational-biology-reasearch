@@ -1,0 +1,46 @@
+name: Stage 7 locked third cohort
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'stage2-rnaseq/stage7_third_cohort.py'
+      - 'stage2-rnaseq/test_stage7.py'
+      - '.github/workflows/stage7-third-cohort.yml'
+permissions:
+  contents: write
+concurrency:
+  group: stage7-third-cohort
+  cancel-in-progress: false
+jobs:
+  confirm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r stage2-rnaseq/requirements.txt scipy
+      - name: Run locked protocol unit tests
+        working-directory: stage2-rnaseq
+        run: python -m unittest -v test_stage7.py
+      - name: Run one-time third cohort evaluation
+        working-directory: stage2-rnaseq
+        run: python stage7_third_cohort.py
+      - name: Upload independent cohort results
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage7-third-cohort-locked-evaluation
+          path: stage2-rnaseq/results/stage7_third_cohort.json
+          if-no-files-found: error
+      - name: Publish locked evaluation output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f stage2-rnaseq/results/stage7_third_cohort.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record locked Stage 7 third-cohort result [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
