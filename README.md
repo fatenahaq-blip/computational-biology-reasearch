@@ -1,3 +1,23 @@
+# Computational Biology Research — Start Here
+
+**Faten Tawfiq Abdelhaq · Independent Researcher**
+
+## Research projects and results
+
+| Project | Status | Open |
+|---|---|---|
+| **STAGE 01 — Breast Cancer Classification** | Completed educational experiment | **[Open Stage 1](STAGE-01-Breast-Cancer-Classification/README.md)** |
+| **STAGE 02 — Multi-Cancer RNA-Seq** | Executed and verified | **[Open Stage 2](STAGE-02-Multi-Cancer-RNA-Seq/README.md)** |
+| **STAGES 03–08 — Advanced Research** | Experiments, audits and reports | [View all stages](docs/RESEARCH_INDEX.md) |
+
+### **[VIEW ALL VERIFIED RESULTS — HUMAN-READABLE DASHBOARD](RESEARCH_RESULTS.md)**
+
+### [Read consolidated research manuscript](manuscript/lung_microarray_domain_shift_draft.md)
+
+The first two folders are now visible at the top level. Existing code remains in `src/` and `stage2-rnaseq/` so working experiment paths are preserved.
+
+---
+
 # Computational Biology Research Portfolio
 
 **Faten Tawfiq Abdelhaq · Independent Researcher**
