@@ -1,0 +1,37 @@
+name: Independent source-matrix reproduction
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'stage2-rnaseq/reproduce_source_matrices.py'
+      - '.github/workflows/reproduce-source-matrices.yml'
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r stage2-rnaseq/requirements.txt scipy
+      - name: Re-execute GEO source-matrix experiments and compare metrics
+        working-directory: stage2-rnaseq
+        run: python reproduce_source_matrices.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-matrix-reproduction-audit
+          path: stage2-rnaseq/results/source_reproduction_audit.json
+          if-no-files-found: error
+      - name: Commit reproduction evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f stage2-rnaseq/results/source_reproduction_audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record independent source-matrix re-execution [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
