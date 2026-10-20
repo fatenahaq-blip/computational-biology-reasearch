@@ -1,0 +1,41 @@
+name: Stage 5 independent microarray cohort
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'stage2-rnaseq/cross_cohort_microarray.py'
+      - 'stage2-rnaseq/test_cross_cohort.py'
+      - '.github/workflows/stage5-independent-cohort.yml'
+permissions:
+  contents: write
+jobs:
+  independent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r stage2-rnaseq/requirements.txt
+      - name: Verify cohort exclusion and pairing
+        working-directory: stage2-rnaseq
+        run: python -m unittest -v test_cross_cohort.py
+      - name: Execute independent-cohort experiment
+        working-directory: stage2-rnaseq
+        run: python cross_cohort_microarray.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage5-independent-cohort-results
+          path: stage2-rnaseq/results/cross_cohort_microarray.json
+          if-no-files-found: error
+      - name: Publish results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f stage2-rnaseq/results/cross_cohort_microarray.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record independent microarray cohort metrics [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
