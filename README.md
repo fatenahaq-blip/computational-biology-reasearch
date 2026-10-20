@@ -1,5 +1,31 @@
 # Computational Biology Research Portfolio
 
+**Faten Tawfiq Abdelhaq · Independent Researcher**
+
+## Start here — All research stages
+
+**[Open the complete Stage 1–8 Research Index](docs/RESEARCH_INDEX.md)**
+
+### First two research projects
+
+**Stage 1 — Breast Cancer Feature Classification:** [Python experiment](src/train.py) · [Validated results](docs/validated-results.md)
+
+**Stage 2 — Multi-Cancer RNA-Seq Classification:** [Project overview](stage2-rnaseq/README.md) · [Python experiment](stage2-rnaseq/rnaseq_analysis.py) · [Verified metrics](stage2-rnaseq/results/rnaseq_metrics.json)
+
+### Advanced research and manuscript
+
+**Stages 3–8:** [Robustness, external cohorts, normalization and patient audit](docs/RESEARCH_INDEX.md)
+
+**Consolidated lung microarray manuscript:** [Read draft](manuscript/lung_microarray_domain_shift_draft.md)
+
+**Scientific integrity:** [Audit](manuscript/SCIENTIFIC_AUDIT.md) · [Reproduction evidence](stage2-rnaseq/results/source_reproduction_audit.json)
+
+> Research distinction: Stage 1 uses image-derived cell-nucleus features; Stages 2–4 use RNA-Seq; Stages 5–8 are a separate microarray research track. All work is exploratory and not clinically validated.
+
+---
+
+# Computational Biology Research Portfolio
+
 **Faten Abdelhaq** | Medical graduate · Python and machine learning learner · Aspiring computational biology researcher
 
 This repository documents reproducible educational experiments in biomedical data analysis and statistical learning. It is a developing portfolio, **not a record of peer-reviewed publications or clinically validated tools**.
