@@ -2,7 +2,39 @@
 import json
 from pathlib import Path
 import numpy as np
-from ucimlrepo import fetch_ucirepo
+import io
+import tarfile
+import urllib.request
+import zipfile
+import pandas as pd
+
+DATASET_URL = "https://archive.ics.uci.edu/static/public/401/gene+expression+cancer+rna+seq.zip"
+
+def load_uci_rnaseq():
+    """Load the original UCI RNA-Seq ZIP containing a nested TAR.GZ archive."""
+    request = urllib.request.Request(DATASET_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(request, timeout=180) as response:
+        zip_bytes = response.read()
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as archive:
+        tar_names = [n for n in archive.namelist() if n.endswith(".tar.gz")]
+        if len(tar_names) != 1:
+            raise ValueError("Expected one nested RNA-Seq TAR.GZ archive")
+        with tarfile.open(fileobj=io.BytesIO(archive.read(tar_names[0])), mode="r:gz") as nested:
+            names = nested.getnames()
+            data_name = next(n for n in names if n.endswith("/data.csv"))
+            label_name = next(n for n in names if n.endswith("/labels.csv"))
+            with nested.extractfile(data_name) as f:
+                data = pd.read_csv(f, index_col=0)
+            with nested.extractfile(label_name) as f:
+                labels = pd.read_csv(f, index_col=0)
+    if data.shape != (801, 20531) or labels.shape[0] != 801:
+        raise ValueError(f"Unexpected dataset dimensions: {data.shape}, {labels.shape}")
+    if not data.index.equals(labels.index):
+        labels = labels.reindex(data.index)
+    if labels.isna().any().any():
+        raise ValueError("Missing or unmatched cancer labels")
+    return data.to_numpy(), labels.iloc[:, 0].to_numpy()
+
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, classification_report, confusion_matrix
@@ -52,9 +84,7 @@ def evaluate(X, labels, n_features=500):
     }
 
 if __name__ == "__main__":
-    dataset = fetch_ucirepo(id=401)
-    X = dataset.data.features.to_numpy()
-    y = dataset.data.targets.iloc[:, 0].to_numpy()
+    X, y = load_uci_rnaseq()
     results = evaluate(X, y)
     out = Path("results/rnaseq_metrics.json")
     out.parent.mkdir(exist_ok=True)
