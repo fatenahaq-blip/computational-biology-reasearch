@@ -24,7 +24,22 @@
 ## Reproduction protocol
 `stage2-rnaseq/reproduce_source_matrices.py` independently re-downloads the three GEO **processed series matrices**, re-executes the Stage 6 and Stage 7 model pipelines, reproduces Stage 8 grouping checks, compares results with published JSON values and records SHA256 checksums plus package versions. The workflow `.github/workflows/reproduce-source-matrices.yml` executes it.
 
-**Execution status:** The script and workflow have been committed. Successful execution and matching metrics are **not yet confirmed** until `stage2-rnaseq/results/source_reproduction_audit.json` appears and is inspected. This is a rerun by the same codebase, not independent analyst replication or raw CEL reprocessing.
+**Execution status:** Completed successfully; matching metrics and file checksums are recorded in the result JSON. This is a rerun by the same codebase, not independent analyst replication or raw CEL reprocessing.
 
 ## Submission decision
 **Conditional / not fully publication-cleared.** Public-record patient grouping and literature provenance are substantially better documented. Original biological identity across cohorts, source-matrix preprocessing lineage at individual GSM level, and independent raw-CEL replication remain unresolved. Do not claim these have been conclusively established.
+
+
+## Reproduction execution outcome — confirmed
+
+The GitHub Actions reproduction workflow completed successfully and saved [source_reproduction_audit.json](../stage2-rnaseq/results/source_reproduction_audit.json).
+
+- GSE10072: 107 training profiles; SHA256 `68fc224d6c23b1802ddc2223a0433c8cf25f11cdb9606e33736f4a0c098496af`.
+- GSE7670: 52 included external specimens; SHA256 `f321f33535c8b929f08499e12e3c2a950030b84bfeb47de8ba8bbd32b934dad7`.
+- GSE31547: 50 third-cohort specimens; SHA256 `cd91ab08f89c282260b4c97fa7199f376a2738e05ad4e61d98f9055ad811d5ee`.
+
+All audited metrics matched the previously saved Stage 6 and 7 results; Stage 8 title-inferred group counts and confusion matrix also matched.
+
+Environment: Python 3.11.17, NumPy 2.4.6, pandas 2.3.3, scikit-learn 1.9.1, SciPy 1.17.1.
+
+**Interpretation:** Confirmed automated re-execution of processed GEO series matrices with the same analysis codebase. This does not independently confirm original biological patient identities, raw CEL-file preprocessing, or cross-study patient non-overlap.
