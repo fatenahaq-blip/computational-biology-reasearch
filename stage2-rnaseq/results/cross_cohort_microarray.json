@@ -1,0 +1,42 @@
+{
+  "study_type": "independent-cohort microarray tumor-vs-normal; not original RNA-Seq model validation",
+  "training_accession": "GSE10072",
+  "external_accession": "GSE7670",
+  "platform": "GPL96",
+  "n_training_samples": 107,
+  "n_external_patient_samples": 52,
+  "n_training_patient_groups": 74,
+  "n_external_patient_groups": 26,
+  "training_class_counts": {
+    "normal": 49,
+    "tumor": 58
+  },
+  "external_class_counts": {
+    "normal": 26,
+    "tumor": 26
+  },
+  "shared_probes": 22215,
+  "train_group_cv_balanced_accuracy_mean": 0.9777777777777779,
+  "train_group_cv_roc_auc_mean": 1.0,
+  "external_accuracy": 0.6346153846153846,
+  "external_balanced_accuracy": 0.6346153846153846,
+  "external_f1": 0.42424242424242425,
+  "external_roc_auc": 0.6538461538461539,
+  "external_confusion_matrix": [
+    [
+      26,
+      0
+    ],
+    [
+      19,
+      7
+    ]
+  ],
+  "caveats": [
+    "Training uses RMA-normalized values; external uses MAS5-scaled values, with significant possible platform-processing shift.",
+    "Matched patient tissue samples are grouped in cross-validation.",
+    "External patient tissue data are not used for fitting or selecting hyperparameters.",
+    "No verified gene symbols, biological biomarker claims or clinical utility are inferred.",
+    "Exploratory study; patient metadata and study independence require further provenance review."
+  ]
+}
