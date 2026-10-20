@@ -16,7 +16,7 @@ python -m src.train
 python -m unittest discover -s tests
 ```
 
-The script prints cross-validation ROC AUC (mean and standard deviation), test ROC AUC and balanced accuracy. No numerical performance is claimed here without execution and review. No identifiable patient data is included.
+The script prints cross-validation ROC AUC (mean and standard deviation), test ROC AUC and balanced accuracy. Results have been executed and checked; see [validated results](docs/validated-results.md). No identifiable patient data is included.
 
 ## Research interests
 
